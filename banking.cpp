@@ -59,13 +59,13 @@ public:
         ifstream ifs("Account.txt");
         ofstream ofs("Temp.txt");
 
-        // bool found = false;
+        bool found = false;
         while (ifs >> ac_no >> c_name >> balance)
         {
             if (ac_no == account_no)
             {
                 balance += amount;
-                // found = true;
+                found = true;
                 cout << "Deposit successful! New balance: " << balance << endl;
             }
             ofs << ac_no << " " << c_name << " " << balance << endl;
@@ -76,10 +76,10 @@ public:
         remove("Account.txt");
         rename("Temp.txt", "Account.txt");
 
-        // if (!found)
-        // {
-        //     cout << "Account not found!" << endl;
-        // }
+        if (!found)
+        {
+            cout << "Account not found!" << endl;
+        }
     }
 
     void withdraw(int account_no, int amount)
@@ -130,7 +130,7 @@ public:
     }
 };
 
-// Initialize static variable
+
 int Account::next_ac_no = 1;
 
 int main()
